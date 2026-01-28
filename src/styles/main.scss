@@ -1,0 +1,19 @@
+// Main SCSS entry point
+
+// Bootstrap (overrides moraju biti prvi)
+@import "./bootstrap/bootstrap-overrides";
+@import "./bootstrap/bootstrap";
+
+// Base
+@import "./base/variables";
+@import "./base/mixins";
+
+// Layout
+@import "./layout/header";
+@import "./layout/footer";
+@import "./layout/offcanvas";
+
+// Components
+@import "./components/button";
+@import "./components/card";
+@import "./components/modal";
