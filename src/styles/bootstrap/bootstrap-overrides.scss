@@ -55,14 +55,14 @@
 // $grid-gutter-width: 1.5rem;
 
 // Grid breakpoints
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 576px,
-//   md: 768px,
-//   lg: 992px,
-//   xl: 1200px,
-//   xxl: 1400px
-// );
+$grid-breakpoints: (
+   xs: 0,
+   sm: 576px,
+   md: 768px,
+   lg: 992px,
+   xl: 1200px,
+   xxl: 1400px
+);
 
 // Maksimalne širine kontejnera
 $container-max-widths: (
