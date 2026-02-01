@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -7,6 +8,21 @@ const glob = require('glob');
 
 const isProd = process.env.NODE_ENV === 'production';
 const srcPath = path.join(__dirname, 'src');
+
+// Pronađi sve HTML datoteke u src/
+const htmlFiles = fs.readdirSync(srcPath).filter(file => file.endsWith('.html'));
+
+// Kreiraj HtmlWebpackPlugin za svaki HTML file
+const htmlPlugins = htmlFiles.map(file => {
+  return new HtmlWebpackPlugin({
+    template: `./src/${file}`,
+    filename: file,
+    minify: isProd ? {
+      collapseWhitespace: true,
+      removeComments: true,
+    } : false,
+  });
+});
 
 module.exports = {
   mode: isProd ? 'production' : 'development',
@@ -81,14 +97,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: 'index.html',
-      minify: isProd ? {
-        collapseWhitespace: true,
-        removeComments: true,
-      } : false,
-    }),
+    ...htmlPlugins,
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
     }),

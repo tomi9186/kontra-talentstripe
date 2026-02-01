@@ -1,0 +1,62 @@
+// Footer komponenta
+
+.site-footer {
+  background-color: #fff;
+  border-top: 1px solid #e9ecef;
+  margin-top: 5rem;
+
+  .footer-logo {
+    img{
+        width: 100%;
+        max-width: 352px;
+    }
+    &:hover {
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  .social-links {
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #f8f9fa;
+      color: #495057;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $amethyst;
+        color: white;
+      }
+
+      i {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .footer-nav {
+    .footer-link {
+      color: #495057;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $amethyst;
+      }
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .footer-nav ul {
+      flex-direction: column !important;
+      gap: 1rem !important;
+    }
+  }
+}

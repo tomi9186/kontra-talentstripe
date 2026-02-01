@@ -1,23 +1,556 @@
 // src/styles/layout/style.scss
+// ============================================================================
+// Mobile-First Responsive Sass - Figma Design System Integration
+// Bootstrap 5 Compatible with updated variables from Figma
+// ============================================================================
+
+// ============================================================================
+// MOBILE RESET & BASE (default)
+// ============================================================================
+* {
+  box-sizing: border-box;
+}
 
 a {
-    color: $primary-text;
+  color: $tolopea;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: $amethyst;
+  }
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 body {
-  background: #ffffff;
-  color: $primary-text;
-
+  margin: 0;
+  padding: 0;
+  background: $white;
+  color: $tolopea;
+  font-family: $font-family;
+  font-weight: $font-weight-regular;
+  line-height: $body-1-line-height;
+  font-size: $font-size-xl;
+  overflow-x: hidden;
+  
   // Background slika vidljiva samo na md breakpoint i većim ekranima
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoint-md) {
     background-image: url('../img/body-bg.svg');
     background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+}
+
+// ============================================================================
+// TYPOGRAPHY (mobile default)
+// ============================================================================
+.h1-hero {
+  font-size: $font-size-h1-mobile;
+  font-weight: $h1-weight;
+  color: $tolopea;
+  margin: 0 0 $spacing-lg 0;
+  line-height: $h1-line-height;
+}
+
+.h1-section {
+  font-size: $font-size-h2-mobile;
+  line-height: $h2-line-height;
+  font-weight: $h2-weight;
+  color: $tolopea;
+  text-align: center;
+  margin: 0 0 $spacing-md 0;
+}
+
+.h2-card {
+  font-size: $font-size-h3-mobile;
+  line-height: $h3-line-height;
+  font-weight: $h3-weight;
+  color: $tolopea;
+}
+
+.h3-title {
+  font-size: $font-size-xl;
+  line-height: $body-1-line-height;
+  font-weight: $font-weight-regular;
+  color: $tolopea;
+}
+
+.body-text {
+  font-size: $font-size-xl;
+  line-height: $body-1-line-height;
+  font-weight: $font-weight-regular;
+  color: $tolopea;
+}
+
+.btn-text {
+  font-size: $font-size-lg;
+  line-height: $body-3-line-height;
+  font-weight: $font-weight-medium;
+}
+
+.small-text {
+  font-size: $font-size-sm;
+  line-height: 1.5;
+  font-weight: $font-weight-semibold;
+}
+
+// ============================================================================
+// BUTTONS (mobile default)
+// ============================================================================
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $small-gap;
+  padding: $btn-pad;
+  border-radius: $border-radius-md;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  min-height: 55px;
+  width: 100%;
+
+  &-purple {
+    background: $amethyst;
+    color: $white;
+    
+    &:hover {
+      background: $grape;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(168, 72, 204, 0.3);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &-teal {
+    background: $bermuda;
+    color: $tolopea;
+    
+    &:hover {
+      background: $downy;
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &-outline {
+    background: $melrose;
+    color: $tolopea;
+    border: 1px solid $tolopea;
+    
+    &:hover {
+      background: $melrose-rgb-25;
+    }
+  }
+}
+
+// ============================================================================
+// CARDS & SECTIONS (mobile default)
+// ============================================================================
+.card {
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &-purple {
+    background: $melrose;
+  }
+  
+  &-teal {
+    background: $iceberg;
+  }
+  
+  &-light {
+    background: $blue-chalk;
+  }
+  
+  &-hero {
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.image-card {
+  img {
+    width: 100%;
+    height: 188px;
+    object-fit: cover;
+    border-radius: $border-radius-lg;
+  }
+}
+
+// ============================================================================
+// NAVIGATION (mobile default)
+// ============================================================================
+.mobile-nav {
+  padding: $spacing-md;
+  gap: $spacing-lg;
+  background: $white;
+  box-shadow: $shadow-nav;
+  border-radius: $border-radius-md;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    width: 166px;
+    height: 54px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .nav-menu {
+    display: none;
+    
+    @media (min-width: $breakpoint-desktop) {
+      display: flex;
+      gap: $spacing-xl;
+      align-items: center;
+    }
+  }
+  
+  .nav-link {
+    color: $tolopea;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-lg;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: $amethyst;
+    }
+  }
+}
+
+// ============================================================================
+// DOTS INDICATOR (mobile/tablet/desktop)
+// ============================================================================
+.dots-indicator {
+  display: flex;
+  gap: $small-gap;
+  align-items: center;
+  justify-content: center;
+
+  .dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &-active {
+      background: $tolopea;
+    }
+    
+    &-inactive {
+      background: $melrose;
+      
+      &:hover {
+        background: $melrose-2;
+      }
+    }
+  }
+}
+
+// ============================================================================
+// FOOTER (mobile default)
+// ============================================================================
+.footer {
+  background: $white;
+  border-radius: $border-radius-md;
+  padding: $spacing-lg $spacing-md;
+  border-top: 1px solid $alto;
+
+  .social-icons {
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+    
+    img, svg {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  
+  .footer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    
+    @media (min-width: $breakpoint-desktop) {
+      flex-direction: row;
+      gap: $spacing-xl;
+    }
+  }
+  
+  .footer-link {
+    color: $tolopea;
+    text-decoration: none;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-md;
+    
+    &:hover {
+      color: $amethyst;
+    }
+  }
+}
+
+// ============================================================================
+// UTILITY CLASSES (mobile default)
+// ============================================================================
+.section-spacing {
+  padding: $section-pad;
+  gap: $section-gap;
+}
+
+.text-center { 
+  text-align: center; 
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-center { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-custom {
+  width: 100%;
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  
+  @media (min-width: $breakpoint-desktop) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+// ============================================================================
+// DESKTOP BREAKPOINTS (Bootstrap-style)
+// ============================================================================
+@media (min-width: $breakpoint-md) {
+  
+  // Typography - Desktop sizes
+  .h1-hero {
+    font-size: $font-size-4xl;
+    line-height: $h1-line-height;
+    margin: 0 0 $spacing-xl 0;
+  }
+  
+  .h1-section {
+    font-size: $font-size-3xl;
+    line-height: $h2-line-height;
+    margin: 0 0 $spacing-lg 0;
+  }
+  
+  .h2-card {
+    font-size: $font-size-2xl;
+    line-height: $h3-line-height;
+  }
+  
+  // Buttons - Desktop padding
+  .btn-primary {
+    padding: $btn-pad;
+    min-height: auto;
+    width: auto;
+    
+    &-purple, 
+    &-teal {
+      min-height: 55px;
+    }
+  }
+  
+  // Navigation
+  .mobile-nav {
+    padding: $spacing-md $spacing-xl;
+    height: auto;
+    border-radius: $border-radius-md;
+    background: $white;
+    box-shadow: $shadow-nav;
+    
+    .logo {
+      width: 200px;
+      height: 64px;
+    }
+  }
+  
+  // Cards
+  .card {
+    padding: $spacing-2xl $spacing-xl;
+    
+    &-hero {
+      padding: $spacing-3xl;
+    }
+  }
+  
+  .image-card img {
+    height: 400px;
+  }
+  
+  // Footer
+  .footer {
+    padding: $spacing-2xl $spacing-3xl;
+    border-radius: $border-radius-md;
+  }
+  
+  // Sections
+  .section-spacing {
+    padding: $spacing-section 0;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  // Extra large desktop adjustments
+  .h1-hero {
+    font-size: $font-size-4xl;
+  }
+  
+  .image-card img {
+    height: 600px;
+  }
+  
+  .container-custom {
+    max-width: $container;
+  }
+}
+
+// ============================================================================
+// HERO SPECIFIC LAYOUT
+// ============================================================================
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  
+  @media (min-width: $breakpoint-md) {
+    gap: $spacing-xl;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: $desktop-hero;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  
+  .hero-links {
+    display: flex;
+    flex-direction: column;
+    gap: $small-gap;
+    width: 100%;
+    
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      gap: $small-gap;
+      width: auto;
+      
+      .btn-primary {
+        width: auto;
+      }
+    }
+  }
+}
+
+// ============================================================================
+// GRID LAYOUTS
+// ============================================================================
+.testimonials-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+    gap: $spacing-2xl;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+  }
+  
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-2xl;
+  }
+}
+
+// ============================================================================
+// RESPONSIVE UTILITIES
+// ============================================================================
+.hidden-mobile {
+  @media (max-width: $breakpoint-tablet) {
+    display: none !important;
+  }
+}
+
+.hidden-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @media (min-width: $breakpoint-md) {
+    display: none !important;
   }
 }

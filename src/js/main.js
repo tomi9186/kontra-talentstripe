@@ -3,10 +3,10 @@ import '../styles/main.scss';
 
 // Bootstrap JS (bundle uključuje Popper)
 import 'bootstrap/dist/js/bootstrap.bundle';
+import './swiper'
 
 // Custom JS
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('WP Slice Starter loaded');
 
   // Navbar hamburger menu custom tekst
   const navbarToggler = document.querySelector('.navbar-toggler');

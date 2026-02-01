@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap'); // Google Fonts za Outfit [web:12]
+
+.job-seeker-hero {
+  --tolopea: #18034F;
+  --tolopea-2: rgba(24, 3, 79, 0.25);
+  --amethyst: #A848CC;
+  --amethyst-2: rgba(168, 72, 204, 0.25);
+
+  padding: 8rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4rem; // 100px gap
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+    padding: 4rem 1rem;
+    gap: 2rem;
+  }
+
+  .hero-content {
+    flex: 0 0 521px;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; // 100px
+    align-items: flex-start;
+
+    .hero-headline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem; // 16px
+      width: 100%;
+
+      .hero-title {
+        color: var(--tolopea);
+        font-family: 'Outfit', sans-serif;
+        font-size: clamp(2rem, 3.5vw, 2.44rem); // 39px responsive
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .hero-subtitle {
+        color: var(--tolopea);
+        font-family: 'Outfit', sans-serif;
+        font-size: clamp(1.75rem, 2.8vw, 2rem); // 32px responsive
+        font-weight: 600;
+        line-height: 1.4;
+        margin: 0;
+      }
+    }
+
+    .hero-features {
+      .feature-line {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem; // 24px
+
+        .line-full {
+          width: 7px;
+          height: 158px;
+          background: var(--amethyst-2);
+          border-radius: 100px;
+        }
+
+        .line-active {
+          width: 7px;
+          height: 26px;
+          background: var(--amethyst);
+          border-radius: 100px;
+        }
+      }
+
+      .feature-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; // 24px
+
+        .feature-item {
+          width: 305px;
+          max-width: 100%;
+          color: var(--tolopea);
+          font-family: 'Outfit', sans-serif;
+          font-size: 1.25rem; // 20px
+          font-weight: 600;
+          line-height: 1.4;
+
+          &.secondary {
+            color: var(--tolopea-2);
+          }
+        }
+      }
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    height: 600px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1.5rem; // 24px
+    }
+  }
+}

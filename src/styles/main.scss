@@ -1,15 +1,25 @@
 // src/styles/main.scss
 
-// Bootstrap
-@import "./bootstrap/bootstrap";
-
-// Base styles (varijable, mixini)
+// 1️⃣ Base styles FIRST (variables, mixins must load before Bootstrap)
 @import "./base/variables";
 @import "./base/mixins";
 
-// Komponente
+// 2️⃣ Bootstrap (uses variables from above)
+@import "./bootstrap/bootstrap";
+
+// Legacy components
+@import "./components/header";
 @import "./components/navbar";
-@import "./components/hero";
+@import "./components/footer";
+@import "./components/gsap-carousel";
+
+// SwiperJS
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/scrollbar';
+@import 'swiper/css/autoplay';
+@import './components/swiper.scss';
 
 // Layout
 @import "./layout/style";

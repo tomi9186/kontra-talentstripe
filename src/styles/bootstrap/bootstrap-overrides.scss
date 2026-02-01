@@ -1,53 +1,258 @@
 // src/styles/bootstrap/bootstrap-overrides.scss
-// Bootstrap 5 Varijable - Prilagođavanje
-// Odkomentiraj i prilagodi varijable prema potrebi
+// ============================================================================
+// Bootstrap 5 Configuration - Figma Design System Integration
+// ============================================================================
+// This file overrides Bootstrap defaults with our design system values
+// Import this BEFORE bootstrap.scss for proper cascading
 
-// ========== BOJE (COLORS) ==========
-// Primarne boje
-// $primary: #0d6efd;
-// $secondary: #6c757d;
-// $success: #198754;
-// $danger: #dc3545;
-// $warning: #ffc107;
-// $info: #0dcaf0;
-// $light: #f8f9fa;
-// $dark: #212529;
+// ============================================================================
+// 1. COLOR SYSTEM
+// ============================================================================
 
-// ========== TIPOGRAFIJA (TYPOGRAPHY) ==========
-// Font familija
-// $font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-// $font-family-code: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+// Primary Colors - Use Figma Amethyst
+$primary: $amethyst;                         // #A848CC
+$secondary: $grape;                          // #8D31AF
 
-// Font veličine
-// $font-size-base: 1rem;
-// $font-size-sm: $font-size-base * 0.875;
-// $font-size-lg: $font-size-base * 1.25;
+// Status Colors
+$success: $bermuda;                          // #87D7D3
+$info: $downy;                               // #62CBC5
+$warning: #FFC107;
+$danger: #DC3545;
 
-// Težina fonta
-// $font-weight-lighter: 300;
-// $font-weight-light: 300;
-// $font-weight-normal: 400;
-// $font-weight-bold: 700;
-// $font-weight-bolder: 800;
+// Neutral Colors
+$light: $titan-white;                        // #F3F0FF (off-white)
+$dark: $tolopea;                             // #18034F (dark purple)
+$body-bg: $white;
+$body-color: $tolopea;
 
-// Visina linije
-// $line-height-base: 1.5;
-// $line-height-sm: 1.25;
-// $line-height-lg: 2;
+// ============================================================================
+// 2. TYPOGRAPHY CONFIGURATION
+// ============================================================================
 
-// ========== RAZMACI (SPACING) ==========
-// Bazni spacer za sve padding/margin
-// $spacer: 1rem;
-// $spacers: (
-//   0: 0,
-//   1: $spacer * 0.25,
-//   2: $spacer * 0.5,
-//   3: $spacer,
-//   4: $spacer * 1.5,
-//   5: $spacer * 3,
-// );
+// Font Family
+$font-family-base: $font-family;
+$font-family-sans-serif: $font-family;
+$font-family-monospace: 'Courier New', monospace;
 
-// ========== GRID SISTEM ==========
+// Font Sizes (Bootstrap compatible - using standard Bootstrap values)
+$font-size-base: 16px;                       // Bootstrap standard 16px
+$font-size-sm: 14px;                         // Small text
+$font-size-lg: 18px;                         // Large text
+
+// Font Weights
+$font-weight-light: $font-weight-light;      // 300
+$font-weight-normal: $font-weight-regular;   // 400
+$font-weight-medium: $font-weight-medium;    // 500
+$font-weight-bold: $font-weight-bold;        // 700
+
+// Line Heights
+$line-height-base: 1.4;                      // 1.4
+$line-height-sm: 1.28;                       // 1.28
+$line-height-lg: 1.5;                        // 1.5
+
+// Headings
+$h1-font-size: $font-size-h1-mobile;
+$h2-font-size: $font-size-h2-mobile;
+$h3-font-size: $font-size-h3-mobile;
+$h4-font-size: $font-size-2xl;
+$h5-font-size: $font-size-xl;
+$h6-font-size: $font-size-lg;
+
+$headings-font-family: $font-family;
+$headings-font-weight: $font-weight-semibold;
+$headings-line-height: 1.2;
+$headings-color: $tolopea;
+
+// ============================================================================
+// 3. SPACING SYSTEM
+// ============================================================================
+
+// Base Spacer Unit
+$spacer: $spacing-md;                        // 16px
+
+// Spacing Scale
+$spacers: (
+  0: 0,
+  1: $spacing-xs,                            // 8px
+  2: $spacing-sm,                            // 10px
+  3: $spacing-md,                            // 16px
+  4: $spacing-lg,                            // 24px
+  5: $spacing-xl,                            // 32px
+  6: $spacing-2xl,                           // 40px
+  7: $spacing-3xl,                           // 48px
+  8: $spacing-4xl,                           // 56px
+  9: $spacing-5xl,                           // 64px
+);
+
+// Padding & Margin
+$padding-base: $spacing-md;
+$margin-base: $spacing-md;
+
+// ============================================================================
+// 4. BORDER & RADIUS
+// ============================================================================
+
+// Border Radius
+$border-radius: $border-radius-md;           // 8px
+$border-radius-sm: $border-radius-xs;        // 4px
+$border-radius-lg: $border-radius-lg;        // 16px
+$border-radius-xl: $border-radius-lg;        // 16px (or 24px for cards)
+$border-radius-pill: $border-radius-round;   // 100px
+
+// Border Color & Width
+$border-color: $alto;
+$border-width: 1px;
+
+// ============================================================================
+// 5. SHADOWS
+// ============================================================================
+
+$box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+$box-shadow: $shadow-card;                   // 0 8px 30px rgba(0, 0, 0, 0.1)
+$box-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+// ============================================================================
+// 6. BUTTONS
+// ============================================================================
+
+// Button Base
+$btn-padding-y: 16px;
+$btn-padding-x: 24px;
+$btn-font-family: $font-family;
+$btn-font-weight: $font-weight-medium;
+$btn-line-height: $lh-tight;
+$btn-border-radius: $border-radius-md;
+
+// Button Sizes
+$btn-padding-y-sm: 12px;
+$btn-padding-x-sm: 16px;
+$btn-padding-y-lg: 20px;
+$btn-padding-x-lg: 32px;
+
+// Button States
+$btn-active-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+$btn-disabled-opacity: 0.65;
+
+// ============================================================================
+// 7. FORMS
+// ============================================================================
+
+$input-padding-y: 12px;
+$input-padding-x: 16px;
+$input-font-family: $font-family;
+$input-font-size: $font-size-base;
+$input-line-height: $lh-body;
+$input-color: $tolopea;
+$input-bg: $white;
+$input-border-color: $alto;
+$input-border-radius: $border-radius-md;
+$input-focus-bg: $white;
+$input-focus-color: $tolopea;
+$input-focus-border-color: $amethyst;
+$input-focus-box-shadow: 0 0 0 3px rgba(168, 72, 204, 0.25);
+
+// ============================================================================
+// 8. NAVIGATION & COMPONENTS
+// ============================================================================
+
+// Navbar
+$navbar-padding-y: $spacing-md;
+$navbar-padding-x: $spacing-lg;
+$navbar-bg-color: $white;
+$navbar-text-color: $tolopea;
+$navbar-border-bottom: 1px solid $alto;
+
+// Nav Links (Bootstrap navbar links)
+$nav-link-padding-y: 8px;                    // 8px padding
+$nav-link-padding-x: 16px;                   // 16px padding
+$nav-link-font-size: $font-size-base;       // 20px
+$nav-link-font-weight: $font-weight-medium; // 500
+$nav-link-color: $tolopea;
+$nav-link-hover-color: $amethyst;
+
+// Links
+$link-color: $amethyst;
+$link-decoration: none;
+$link-hover-color: darken($amethyst, 15%);
+$link-hover-decoration: underline;
+
+// ============================================================================
+// 9. BREAKPOINTS (Responsive Grid)
+// ============================================================================
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $breakpoint-tablet,                    // 576px
+  md: $breakpoint-md,                        // 768px
+  lg: $breakpoint-desktop,                   // 992px
+  xl: $breakpoint-xl,                        // 1200px
+  xxl: $breakpoint-xxl,                      // 1400px
+);
+
+// Grid Configuration
+$grid-columns: 12;
+$grid-gutter-width: $spacing-lg;             // 24px
+
+// Container Max Widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1520px,  // 🎯 Default container width as per design specification
+);
+
+// ============================================================================
+// 10. TRANSITIONS & ANIMATIONS
+// ============================================================================
+
+$transition-base: all 0.3s ease;
+$transition-fade: opacity 0.3s ease;
+$transition-collapse: height 0.35s ease;
+
+// ============================================================================
+// 11. TABLES
+// ============================================================================
+
+$table-bg: $white;
+$table-border-color: $alto;
+$table-head-bg: $titan-white;
+$table-head-color: $tolopea;
+$table-hover-bg: rgba(209, 196, 255, 0.1);
+$table-hover-color: $tolopea;
+
+// ============================================================================
+// 12. ALERTS & BADGES
+// ============================================================================
+
+$alert-bg-scale: -80%;
+$alert-border-scale: -70%;
+$alert-color-scale: 40%;
+
+// Badge
+$badge-font-size: 0.75rem;
+$badge-font-weight: $font-weight-semibold;
+$badge-padding-y: 0.35em;
+$badge-padding-x: 0.65em;
+$badge-border-radius: $border-radius-xs;
+
+// ============================================================================
+// 13. MODAL
+// ============================================================================
+
+$modal-border-radius: $border-radius-lg;
+$modal-header-border-bottom: 1px solid $alto;
+$modal-backdrop-bg: $tolopea;
+
+// ============================================================================
+// 14. PAGINATION
+// ============================================================================
+
+$pagination-bg: $white;
+$pagination-border-color: $alto;
+$pagination-hover-bg: $titan-white;
+$pagination-active-bg: $amethyst;
+$pagination-active-border-color: $amethyst;
 // Broj kolona
 // $grid-columns: 12;
 
@@ -154,3 +359,4 @@ $container-max-widths: (
 // $enable-validation-icons: true;
 // $enable-negative-margins: true;
 // $enable-deprecation-messages: true;
+
