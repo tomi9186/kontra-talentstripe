@@ -1,0 +1,91 @@
+// components/_blog.scss - SIMPLIFIED BOOTSTRAP GRID
+.blog {
+  --tolopea: #{$tolopea};
+  --melrose: #{$melrose};
+  
+  padding-top: $spacing-section !important;
+  padding-bottom: $spacing-section !important;
+  
+  .blog-header {
+    .title {
+      font-size: $font-size-2xl !important; // Mobile H3
+      font-weight: $font-weight-semibold;
+      color: var(--tolopea);
+      font-family: $font-family;
+      line-height: 1.2;
+    }
+    
+    .view-more {
+      font-size: $font-size-lg !important;
+      font-weight: $font-weight-medium;
+      color: var(--tolopea);
+      font-family: $font-family;
+    }
+  }
+  
+  .post-card {
+    gap: $spacing-lg !important;
+    
+    .post-image {
+      height: 220px;
+      width: 100%;
+      border-radius: $border-radius-lg !important;
+      object-fit: cover;
+    }
+    
+    .post-content {
+      padding-left: $spacing-md !important;
+      padding-right: $spacing-md !important;
+      gap: $font-size-xl !important;
+      
+      .post-header {
+        .post-title {
+          font-size: $font-size-xl !important;
+          font-weight: $font-weight-semibold;
+          color: var(--tolopea);
+          font-family: $font-family;
+          margin-bottom: 0;
+        }
+        
+        .post-date {
+          padding: $spacing-xs $spacing-md !important;
+          background-color: var(--melrose) !important;
+          border-radius: $border-radius-xs !important;
+          color: var(--tolopea);
+          font-size: $font-size-sm !important;
+          font-weight: $font-weight-semibold;
+          font-family: $font-family;
+          white-space: nowrap;
+        }
+      }
+      
+      .post-excerpt {
+        font-size: $font-size-xl !important;
+        font-weight: $font-weight-regular;
+        color: var(--tolopea);
+        font-family: $font-family;
+        line-height: 1.4;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // DESKTOP: 200px padding + veći title
+  @media (min-width: $breakpoint-desktop) {
+    .container & {
+      .blog-header {
+        padding-left: 12.5rem !important; // 200px
+        padding-right: 12.5rem !important;
+      }
+      
+      .row > .col-md-4 {
+        padding-left: 12.5rem !important;
+        padding-right: 12.5rem !important;
+      }
+    }
+    
+    .title {
+      font-size: $font-size-3xl !important; // H2 desktop
+    }
+  }
+}

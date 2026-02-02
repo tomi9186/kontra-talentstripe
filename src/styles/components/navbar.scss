@@ -5,16 +5,21 @@
 
 .site-header {
     top: 1.5rem;
+    border-radius: $border-radius-md;
 
   .navbar {
     
-    .container{
-        background: #ffffff;
-        box-shadow: 0 8px 30px 0 rgba(83, 80, 92, 0.05);
-    }
 
+    background: #ffffff;
+    box-shadow: 0 8px 30px 0 rgba(83, 80, 92, 0.05);
+   
     .navbar-brand {
       margin-right: 2rem;
+      padding: 0;
+
+      img{
+        height: 54px;
+      }
 
       &:hover {
         opacity: 0.9;
@@ -22,11 +27,30 @@
     }
 
     .navbar-nav {
+      .nav-item{
+        border-radius: 8px;
+
+        &.active{
+          background:$amethyst-2;          
+        }
+        &.active:nth-child(2){
+          background:$melrose;
+        }
+        &.active:nth-child(3){
+          background:$bermuda
+        }
+      }
       .nav-link {
         font-weight: 500;
-        //color: $primary-purple;
+        color: $tolopea;
         padding: 0;
         transition: color 0.3s ease;
+        font-size:25px;
+        padding: 12px 24px;
+
+        @media (min-width: $breakpoint-md){
+          font-size: 18px;
+        }
 
         &:hover {
           
@@ -42,9 +66,18 @@
       gap: 0.5rem;
 
       .btn-sm {
-        padding: 0.4rem 1rem;
+        padding: 1rem 1.5rem;
         font-size: 0.875rem;
         font-weight: 500;
+        border-radius: 8px;
+        color: $tolopea;
+        border: none;
+        outline: none;
+        font-size: $font-size-lg;
+
+        &.btn-secondary{
+          background-color: $melrose;
+        }
       }
     }
   }

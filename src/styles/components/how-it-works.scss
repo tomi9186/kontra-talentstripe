@@ -1,0 +1,98 @@
+// components/_how-it-works.scss - MOBILE-FIRST + BOOTSTRAP GRID
+.how-it-works {
+  --tolopea: #{$tolopea};
+  --bermuda: #{$bermuda};
+  
+  padding-bottom: $spacing-4xl * 3.5 !important; // ~200px
+  padding-top: $spacing-section !important;
+  
+  .section-title {
+    font-size: $font-size-2xl !important; // Mobile H3
+    font-weight: $font-weight-semibold;
+    color: var(--tolopea);
+    font-family: $font-family;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  .steps-grid {
+    .step-item {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: $spacing-2xl !important; // 30px gap
+      
+      .step-icon {
+        width: 100px;
+        height: 98px;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .step-title {
+        font-size: $font-size-xl !important; // 20px
+        font-weight: $font-weight-semibold;
+        color: var(--tolopea);
+        font-family: $font-family;
+        line-height: 1.4;
+      }
+    }
+  }
+  
+  .cta-buttons {
+    gap: $spacing-md !important; // 16px
+    
+    .btn-bermuda {
+      padding: $spacing-md $spacing-2xl !important; // 16x24px
+      background-color: var(--bermuda) !important;
+      border-radius: $border-radius-sm !important;
+      color: var(--tolopea);
+      font-size: $font-size-lg !important;
+      font-weight: $font-weight-medium;
+      font-family: $font-family;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .btn-outline {
+      padding: $spacing-md $spacing-2xl !important;
+      border-radius: $border-radius-sm !important;
+      color: var(--tolopea);
+      font-size: $font-size-lg !important;
+      font-weight: $font-weight-medium;
+      font-family: $font-family;
+      border: 1px solid var(--tolopea);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+  }
+
+  // DESKTOP: 200px padding + veći title
+  @media (min-width: $breakpoint-desktop) {
+    .container & {
+      padding-left: 12.5rem !important; // 200px
+      padding-right: 12.5rem !important;
+      
+      .section-title {
+        padding-left: 12.5rem !important;
+        padding-right: 12.5rem !important;
+      }
+      
+      .row > [class*="col-"] {
+        padding-left: 12.5rem !important;
+        padding-right: 12.5rem !important;
+      }
+    }
+    
+    .section-title {
+      font-size: $font-size-3xl !important; // H2 desktop 39px
+    }
+  }
+}

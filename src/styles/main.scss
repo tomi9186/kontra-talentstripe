@@ -8,10 +8,11 @@
 @import "./bootstrap/bootstrap";
 
 // Legacy components
-@import "./components/header";
 @import "./components/navbar";
 @import "./components/footer";
 @import "./components/gsap-carousel";
+
+@import "./components/blog";
 
 // SwiperJS
 @import 'swiper/css';
