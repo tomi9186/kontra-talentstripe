@@ -1,0 +1,54 @@
+// Hero sekcija komponenta - kompatibilna sa Gutenberg blokovima
+
+.hero {
+  position: relative;
+  margin-top: $spacing-lg;
+
+  @include media-breakpoint-up(md) {
+    padding: 180px 0;
+    margin-top: 0;
+  }
+
+  h1{
+    margin-bottom: 32px;
+  }
+
+  p{
+    margin-bottom: 48px;
+  }
+
+  .container{
+
+    @include media-breakpoint-up(md) {
+        padding-left: $spacing-3xl;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: relative;
+    right: 0;
+    top: $spacing-3xl;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/hero.png');
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: scroll;
+    z-index: 0;
+    display: block;
+    aspect-ratio: 1 / 1;
+    margin-left: auto;
+
+    @include media-breakpoint-up(md) {
+        position: absolute;
+        width: 50%;
+        top: 0;
+    }
+  }
+}
+
+
+

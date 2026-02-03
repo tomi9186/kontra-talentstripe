@@ -1,0 +1,16 @@
+.back-to-top{
+  width: 64px;
+  line-height: 64px;
+  border-radius: 50%;
+  bottom: 40px;
+  right: 40px;
+  text-align: center;
+  z-index:100;
+  svg{
+
+     .progress-ring {
+        transform: rotate(-90deg);  // ← POČINJE OD 12h pozicije!
+        transform-origin: center;   // ← Centar rotacije
+        }
+  }
+}

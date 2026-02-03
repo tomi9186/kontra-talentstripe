@@ -360,3 +360,19 @@ $container-max-widths: (
 // $enable-negative-margins: true;
 // $enable-deprecation-messages: true;
 
+// ============================================================================
+// MOBILE CONTAINER PADDING OVERRIDE
+// ============================================================================
+
+@media (max-width: #{$breakpoint-tablet - 1}) {
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  // Za fluid kontejnere također
+  .container-fluid {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}

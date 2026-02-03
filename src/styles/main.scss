@@ -9,8 +9,11 @@
 
 // Legacy components
 @import "./components/navbar";
+@import "./components/hero";
+@import "./components/back-to-top";
 @import "./components/footer";
 @import "./components/gsap-carousel";
+@import "./components/button-ripple";
 
 @import "./components/blog";
 
@@ -24,3 +27,4 @@
 
 // Layout
 @import "./layout/style";
+@import "./layout/pages";

@@ -128,33 +128,33 @@ body {
 }
 
 .btn-primary {
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
   gap: $small-gap;
   padding: $btn-pad;
-  border-radius: $border-radius-md;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-medium;
+  border-radius: $border-radius-sm;
   text-decoration: none;
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
   min-height: 55px;
   width: 100%;
+  background: $melrose;
+  color: $tolopea;
+
+  &:active, &:focus{
+    background: $amethyst;
+    color: $white;
+  }
 
   &-purple {
     background: $amethyst;
     color: $white;
     
-    &:hover {
-      background: $grape;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(168, 72, 204, 0.3);
-    }
-    
-    &:active {
-      transform: translateY(0);
+    &:hover, &:focus, &:active, &:visited {
+      background: $amethyst;
+      color: $white;
     }
   }
   
@@ -164,7 +164,6 @@ body {
     
     &:hover {
       background: $downy;
-      transform: translateY(-2px);
     }
     
     &:active {
@@ -179,6 +178,19 @@ body {
     
     &:hover {
       background: $melrose-rgb-25;
+    }
+  }
+
+  &-bermuda{
+    background: $bermuda;
+    color: $tolopea;
+    
+    &:hover {
+      background: $downy;
+    }
+    
+    &:active {
+      transform: translateY(0);
     }
   }
 }
@@ -574,4 +586,21 @@ body {
   @media (min-width: $breakpoint-md) {
     display: none !important;
   }
+}
+
+
+.mb-100{
+  margin-bottom: 100px;
+}
+
+.mb-200{
+  margin-bottom: 200px;
+}
+.p-56{
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+h2{
+  margin-bottom: $spacing-lg;
 }
