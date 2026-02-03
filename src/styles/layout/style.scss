@@ -604,3 +604,9 @@ body {
 h2{
   margin-bottom: $spacing-lg;
 }
+
+section[id], 
+div[id], 
+article[id] {
+  scroll-margin-top: 150px;
+}

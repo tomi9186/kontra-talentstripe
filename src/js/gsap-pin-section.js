@@ -4,101 +4,117 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-export function initGsapPinSection() {
-  const jobSeekerHero = document.querySelector('.job-seeker-hero');
-  if (!jobSeekerHero) return;
+export function initGsapPinSection(container = document) {
+  // ✅ RESPONSIVE DETEKCIJA (Bootstrap md+ = 768px+)
+  const isDesktop = window.innerWidth >= 768;
+  if (!isDesktop) return;
 
-  const images = jobSeekerHero.querySelectorAll('.hero-image');
-  const featureItems = jobSeekerHero.querySelectorAll('.feature-item');
-  const lineActive = jobSeekerHero.querySelector('.line-active');
+  // ✅ NAĐI SVE BLOKOVE (podržava više blokova)
+  const wrappers = container.querySelectorAll('.custom-scroll-pin-wrapper');
+  
+  wrappers.forEach((customScrollPinWrapper, wrapperIndex) => {
+    const customScrollPinElement = customScrollPinWrapper.querySelector('.custom-scroll-pin-element');
+    if (!customScrollPinElement) return;
 
-  if (images.length === 0 || featureItems.length === 0 || !lineActive) return;
+    // ✅ UNIČNI ID za svaki blok
+    const uniqueId = `pin-section-${wrapperIndex}`;
 
-  const totalSlides = images.length;
-  let currentSlide = 0;
-  let scrollTrigger = null;
+    // FIKSNA 600px VISINA
+    const customScrollPinWrapperHeight = 600;
+    customScrollPinWrapper.style.height = `${customScrollPinWrapperHeight * 4}px`;
 
-  // Initial state
-  gsap.set(images[0], { autoAlpha: 1 });
-  gsap.set(lineActive, { y: 0 });
-  featureItems[0].classList.add('active');
-
-  function updateActiveSlide(index) {
-    // Fade out current
-    gsap.to(images[currentSlide], { 
-      autoAlpha: 0, 
-      scale: 0.95, 
-      duration: 0.6, 
-      ease: 'power2.inOut' 
+    // SLIKE: 600px height, auto width, cover
+    gsap.set(customScrollPinWrapper.querySelector('.custom-scroll-pin-images'), { 
+      height: customScrollPinWrapperHeight + 'px' 
     });
-    
-    // Fade in new
-    gsap.fromTo(images[index], 
-      { autoAlpha: 0, scale: 1.05 }, 
-      { autoAlpha: 1, scale: 1, duration: 0.8, ease: 'power2.out' }
-    );
-
-    // Update features
-    featureItems.forEach((item, i) => {
-      item.classList.toggle('active', i === index);
-      item.classList.toggle('secondary', i !== index);
+    gsap.set(customScrollPinWrapper.querySelectorAll('.custom-scroll-pin-image'), { 
+      height: customScrollPinWrapperHeight + 'px',
+      width: '100%'
+    });
+    gsap.set(customScrollPinWrapper.querySelectorAll('.custom-scroll-pin-image img'), { 
+      height: customScrollPinWrapperHeight + 'px',
+      width: '100%',
+      objectFit: 'cover'
     });
 
-    currentSlide = index;
-  }
+    const images = customScrollPinElement.querySelectorAll('.custom-scroll-pin-image');
+    const listItems = customScrollPinElement.querySelectorAll('ul.custom-scroll-pin-list > li');
 
-  // Navigation clicks
-  featureItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      if (scrollTrigger) {
-        const targetProgress = index / (totalSlides - 1);
-        const scrollPos = scrollTrigger.start + targetProgress * (scrollTrigger.end - scrollTrigger.start);
-        gsap.to(window, { 
-          scrollTo: { y: scrollPos, offsetY: 0 }, 
-          duration: 1.2,
-          ease: 'power2.inOut',
-          onComplete: () => updateActiveSlide(index)
-        });
+    // Ukloni active klase
+    listItems.forEach(li => li.classList.remove('active'));
+
+    // Pin glavni element (UNIČNI ID)
+    ScrollTrigger.create({
+      id: `${uniqueId}-main`,
+      trigger: customScrollPinWrapper,
+      start: 'top top',
+      end: 'bottom bottom',
+      pin: customScrollPinElement,
+      pinSpacing: false,
+      invalidateOnRefresh: true
+    });
+
+    // Master controller (UNIČNI ID)
+    ScrollTrigger.create({
+      id: `${uniqueId}-controller`,
+      trigger: customScrollPinWrapper,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const progress = self.progress;
+        let activeIndex;
+        if (progress < 0.33) activeIndex = 0;
+        else if (progress < 0.66) activeIndex = 1;
+        else activeIndex = 2;
+        
+        listItems.forEach(li => li.classList.remove('active'));
+        if (listItems[activeIndex]) {
+          listItems[activeIndex].classList.add('active');
+        }
       }
     });
 
-    // Hover effects
-    item.addEventListener('mouseenter', () => {
-      gsap.to(lineActive, { 
-        y: (index * 132) / (totalSlides - 1), 
-        duration: 0.4, 
-        ease: 'power2.out' 
+    // Progress bar animacije
+    [0, 1, 2].forEach(index => {
+      if (!listItems[index]) return;
+      const listItem = listItems[index];
+
+      gsap.to(listItem, {
+        '--custom-pin-progression': 1,
+        scrollTrigger: {
+          id: `${uniqueId}-listitem-${index}`,
+          trigger: customScrollPinWrapper,
+          start: `top+=${customScrollPinWrapperHeight * index}px top`,
+          end: `+=${customScrollPinWrapperHeight}px`,
+          scrub: true,
+          invalidateOnRefresh: true
+        }
       });
     });
 
-    item.addEventListener('mouseleave', () => {
-      gsap.to(lineActive, { 
-        y: (currentSlide * 132) / (totalSlides - 1), 
-        duration: 0.5, 
-        ease: 'power2.out' 
+    // Clip-path SAMO za prve 2
+    [0, 1].forEach(index => {
+      if (!images[index]) return;
+      const image = images[index];
+
+      gsap.to(image, {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+        scrollTrigger: {
+          id: `${uniqueId}-image-${index}`,
+          trigger: customScrollPinWrapper,
+          start: `top+=${customScrollPinWrapperHeight * index}px top`,
+          end: `+=${customScrollPinWrapperHeight}px`,
+          scrub: true,
+          invalidateOnRefresh: true
+        }
       });
     });
-  });
 
-  // ScrollTrigger PIN + SLIDE efekat
-  scrollTrigger = ScrollTrigger.create({
-    trigger: jobSeekerHero,
-    start: 'top top',
-    end: `+=${(totalSlides - 1) * 300}vh`, // Sporije scroll
-    scrub: 2,
-    pin: true,
-    anticipatePin: 1,
-    onUpdate: (self) => {
-      const progress = self.progress;
-      
-      // Line indicator
-      gsap.set(lineActive, { y: progress * 132 });
-      
-      // Slide change
-      const slideIndex = Math.round(progress * (totalSlides - 1));
-      if (slideIndex !== currentSlide && slideIndex >= 0 && slideIndex < totalSlides) {
-        updateActiveSlide(slideIndex);
-      }
+    // Treća slika uvijek vidljiva
+    if (images[2]) {
+      gsap.set(images[2], { 
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+      });
     }
   });
 }

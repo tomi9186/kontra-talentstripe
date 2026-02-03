@@ -52,8 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // GSAP init (ako postoji)
-    if (typeof initGsapPinSection === 'function') {
-        initGsapPinSection();
+    
+    const pinSection = document.querySelector('.custom-scroll-pin-wrapper');
+    if (pinSection) {
+        initGsapPinSection(document);
     }
 });

@@ -1,214 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+.custom-scroll-pin-wrapper{
+  .section-title{
+    margin-bottom: 40px;
+  }
+  h2, p{
+    margin-bottom: 16px;
+  }
+  img{
+    margin-bottom:48px;
+  }
 
-.job-seeker-hero {
-  --tolopea: #18034F;
-  --tolopea-2: rgba(24, 3, 79, 0.25);
-  --amethyst: #A848CC;
-  --amethyst-2: rgba(168, 72, 204, 0.25);
+}
 
-  padding: 8rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4rem;
+@media (min-width: $breakpoint-md) {
+.custom-scroll-pin-images {
   position: relative;
-  min-height: 100vh;
-
-  @media (max-width: 991px) {
-    flex-direction: column;
-    gap: 2rem;
-    padding: 4rem 1rem;
-  }
-
-  /* ✅ FIKSNI CONTENT + NAVIGACIJA */
-  .hero-content {
-    flex: 0 0 521px;
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    max-width: 521px;
-    z-index: 10;
-    position: relative;
-
-    @media (max-width: 991px) {
-      flex: none;
-      width: 100%;
-      order: 1;
-      gap: 2rem;
-    }
-
-    .hero-headline {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-
-      .hero-title {
-        color: var(--tolopea);
-        font-family: 'Outfit', sans-serif;
-        font-size: clamp(2rem, 3.5vw, 2.44rem);
-        font-weight: 600;
-        line-height: 1.2;
-        margin: 0;
-      }
-
-      .hero-subtitle {
-        color: var(--tolopea);
-        font-family: 'Outfit', sans-serif;
-        font-size: clamp(1.75rem, 2.8vw, 2rem);
-        font-weight: 600;
-        line-height: 1.4;
-        margin: 0;
-      }
-    }
-
-    .hero-features {
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-
-      @media (max-width: 991px) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2rem;
-      }
-
-      .feature-line {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-        flex-shrink: 0;
-
-        .line-full {
-          width: 7px;
-          height: 158px;
-          background: var(--amethyst-2);
-          border-radius: 100px;
-        }
-
-        .line-active {
-          width: 7px;
-          height: 26px;
-          background: var(--amethyst);
-          border-radius: 100px;
-          will-change: transform;
-        }
-      }
-
-      .feature-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        max-width: 305px;
-
-        .feature-item {
-          width: 100%;
-          max-width: 305px;
-          color: var(--tolopea-2);
-          font-family: 'Outfit', sans-serif;
-          font-size: 1.25rem;
-          font-weight: 600;
-          line-height: 1.4;
-          cursor: pointer;
-          transition: color 0.3s ease;
-          padding: 0.5rem 0;
-          position: relative;
-
-          &.active,
-          &.secondary.active {
-            color: var(--tolopea);
-          }
-
-          &::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--amethyst);
-            transition: width 0.3s ease;
-          }
-
-          &:hover {
-            color: var(--amethyst);
-            &::before {
-              width: 100%;
-            }
-          }
-
-          &.active::before {
-            width: 100%;
-          }
-        }
-      }
-    }
-  }
-
-  /* ✅ SLIDE-OVE SLika */
-  .hero-images-wrapper {
-    flex: 1;
-    position: relative;
-    height: 600px;
-    overflow: hidden;
-    border-radius: 1.5rem;
-
-    @media (max-width: 991px) {
-      height: 300px;
-      width: 100%;
-      order: 2;
-    }
-
-    .hero-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      visibility: hidden;
-      will-change: opacity, transform;
-
-      &.active {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 1.5rem;
-        box-shadow: 0 25px 50px -12px rgba(24, 3, 79, 0.25);
-      }
-    }
-  }
-}
-
-.gsap-carousel.gsap-pin-spacer {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-@media (max-width: 768px) {
-  .job-seeker-hero {
-    padding: 3rem 1rem;
+  height: 100%;
+  
+  .custom-scroll-pin-image {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     
-    .hero-content .hero-features .feature-line .line-full {
-      height: 120px;
+    &:nth-child(1) {
+      z-index: 4;
     }
     
-    .hero-images-wrapper {
-      height: 250px;
+    &:nth-child(2) {
+      z-index: 3;
+    }
+    
+    &:nth-child(3) {
+      z-index: 2;
+    }
+    
+    > img {
+      height: auto;
+      width: 100%;
+      border-radius: $border-radius-lg;
+      object-fit: cover;
+      object-position: center;
+      overflow: hidden;
+    }
+
+    p{
+      @media (min-width: $breakpoint-md) {
+        display: none;
+      }
     }
   }
 }
 
-@media (max-width: 480px) {
-  .job-seeker-hero {
-    padding: 2rem 1rem;
-    .hero-images-wrapper {
-      height: 200px;
+// Custom Scroll Pin List
+ul.custom-scroll-pin-list {
+  position: relative;
+  padding-left: 0;
+  list-style: none;
+  
+  > li {
+    --custom-pin-progression: 0;
+    display: block;
+    position: relative;
+    margin-block: 0;
+    padding: 0.75rem 0 0.75rem calc(0.5rem + 1rem);
+    opacity: 0.25;
+
+    &.active {
+      opacity: 1;
     }
   }
+  
+  // Shared progress bar styles
+  &::before,
+  > li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.5rem;
+    height: 100%;
+    background-color: $amethyst;
+    opacity: 0.25;
+    border-radius: 100px;
+  }
+
+  li:before{
+    border-radius: 0;
+  }
+
+  li:first-child::before{
+    border-radius: 100px 100px 0 0;
+  }
+
+  li:last-child::before{
+    border-radius: 0 0 100px 100px;
+  }
+  
+  // List item specific progress bar
+  > li::before {
+    opacity: 1;
+    transform-origin: left top;
+  }
+}
+
+// ✅ SAMO DODAJ ovo uz postojeći SCSS
+.custom-scroll-pin-wrapper {
+  .custom-scroll-pin-element {
+    height: auto;
+    padding-top: 150px;
+
+    .inner-col.col-md-7.col-images {
+      position: relative;
+    }
+    
+
+    .inner-col.col-md-4 {
+      position: sticky;
+      top: 20px; // Mali padding
+      z-index: 10;
+
+      @media (min-width: $breakpoint-md) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+  h2{
+    margin-bottom: $spacing-md;
+    font-size: 31px;
+
+    @media (min-width: $breakpoint-md) {
+     font-size: 39px;
+    }
+  }
+
+  h3{
+
+    @media (min-width: $breakpoint-md) {
+     font-size: 32px;
+    }
+  }
+
+  .section-title{
+
+    @media (min-width: $breakpoint-md) {
+      margin-bottom: 100px;
+    }
+  }
+}
 }
