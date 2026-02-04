@@ -1,16 +1,133 @@
 .swiper {
-  .swiper-slide {
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    width: 100%;
-    max-width: 770px;
-    margin: 0 auto;
+  .swiper-container {
+    padding: 44px 0 20px;
+    background-image: url('../img/map.svg');
+    background-repeat: no-repeat;
+    background-position: bottom;
 
-    @media (min-width: 1440px) {
-      .swiper-slide {
-        width: 100%;
-        max-width: 770px;
+    .swiper-pagination {
+      bottom: 144px;
+
+      .swiper-pagination-bullet {
+        width: 16px;
+        height: 16px;
+        background: $tolopea-2;
+        opacity: 0.25;
+
+        &.swiper-pagination-bullet-active {
+          background: $tolopea;
+          opacity: 1;
+        }
       }
     }
+  }
+
+  &.titan-white{
+    .swiper-container{
+      background-color: $titan-white-2;
+      background-image: url('../img/map-2.svg');
+
+      .card-item{
+        background-color: $blue-chalk;
+      }
+    }
+    .swiper-button-prev,
+    .swiper-button-next{
+      background-color: $blue-chalk;
+    }
+  }
+
+  &.bermuda{
+    .swiper-container{
+      background-color: $bermuda;
+      background-image: url('../img/map-3.svg');
+
+      .card-item{
+        background-color: $iceberg;
+      }
+    }
+    .swiper-button-prev,
+    .swiper-button-next{
+      background-color: $iceberg;
+    }
+  }
+
+  .swiper-slide {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .slide-content {
+      width: 100%;
+
+      @media (min-width: $breakpoint-md) {
+        width: 500px;
+      }
+
+      @media (min-width: $breakpoint-lg) {
+        width: 770px;
+      }
+
+      h3{
+        font-size: 25px;
+        margin-bottom: 16px;
+
+        @media (min-width: $breakpoint-md) {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+
+  .card-item {
+    padding: 64px 16px 104px;
+    background: $melrose;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    background-image: url("data:image/svg+xml,%3Csvg width='78' height='63' viewBox='0 0 78 63' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M34.6 7.2L22.4 30C28.2 31.6 33.4 37.4 33.4 45C33.4 54.4 26 62.2 16.8 62.2C7.8 62.2 0 54.6 0 45C0 41.2 1.2 36.4 5.6 28.4L21 0L34.6 7.2ZM77.6 7.2L65.4 30C71.2 31.6 76.4 37.4 76.4 45C76.4 54.4 69 62.2 59.6 62.2C50.8 62.2 43 54.6 43 45C43 41.2 44.2 36.4 48.6 28.4L64 0L77.6 7.2Z' fill='%2318034F' fill-opacity='0.1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 78px auto;
+    background-position: 75px 44px;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 64px 100px 104px;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: $melrose;
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='17' viewBox='0 0 10 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.999999 1L8.5 8.5L1 16' stroke='%2318034F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70px;
+    height: 70px;
+    right: 258px;
+
+    &.swiper-button-disabled {
+      background-color: transparent;
+      border: 1px solid rgba(24, 3, 79, 0.25);
+    }
+
+    svg {
+      display: none;
+    }
+  }
+
+  .swiper-button-prev {
+    transform: rotate(-180deg);
+    right: auto;
+    left: 258px;
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    top: 50px;
+    transition: all 600ms linear;
   }
 
   .swiper-slide-active {
@@ -21,7 +138,6 @@
   }
 
   .swiper-slide-prev {
-    top: 30px;
     .card-item {
       transform: rotate(-15deg) !important;
       margin-top: 60px !important;
@@ -29,39 +145,17 @@
   }
 
   .swiper-slide-next {
-    top: 30px;
     .card-item {
       transform: rotate(15deg) !important;
       margin-top: 60px !important;
     }
   }
 
-  // Ostali slides - manje vidljivi
   .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next) {
     .card-item {
       opacity: 0.6;
       transform: scale(0.75) !important;
       margin-top: 60px !important;
     }
-  }
-
-  .card-item {
-    padding: 64px 100px;
-    background: $melrose;
-    border-radius: 16px;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
-    width: 100%;
-  }
-}
-
-.swiper-container{
-  padding: 44px 0 74px;
-  background-image: url('../img/map.svg');
-  background-repeat: no-repeat;
-  background-position: bottom;
-
-  &.titan-white{
-    background-color: $titan-white;
   }
 }

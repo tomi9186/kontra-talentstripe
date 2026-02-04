@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     centerInsufficientSlides: true,
     
     // Infinite loop
-     loop: false,
-    // loopedSlides: 6,
+    //loop: true,
+    loopedSlides: 6,
     
     // Slides per view - veći razmak
     slidesPerView: 'auto',
-    spaceBetween: 260, // Povećan razmak
+    spaceBetween: 300, // Povećan razmak
     
     // Speed i efekti
     speed: 600,
@@ -46,38 +46,47 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // MOBILE PRIORITET - SAMO 1 SLIDE VIDLJIV
     breakpoints: {
-      320: {
-        slidesPerView: 1.1,  // Samo centralni + malo ivica
-        spaceBetween: 30,
-      },
-      480: {
-        slidesPerView: 1.3,
-        spaceBetween: 40,
-      },
-      768: {
-        slidesPerView: 1.6,  // Vidljive 3 kartice
-        spaceBetween: 50,
-      },
-      1024: {
-        slidesPerView: 2.0,  // Optimalno za desktop
-        spaceBetween: 60,
-      },
-      1440: {
-        slidesPerView: 2.2,
-        spaceBetween: 360,
-      },
-    },
+  // xs (0+) - mali mobilni ✓
+  320: {
+    slidesPerView: 1,
+    spaceBetween: 30,
+  },
+  
+  // sm (576px+) - mali tablet
+  576: {
+    slidesPerView: 1,
+    spaceBetween: 35,
+  },
+  
+  // md (768px+) - tablet ✓
+  768: {
+    slidesPerView: 1,
+    spaceBetween: 50,
+  },
+  
+  // lg (992px+) - desktop mali  
+  992: {
+    slidesPerView: 1,
+    spaceBetween: 60,
+    centeredSlides: true,
+  },
+  
+  // xl (1200px+) - desktop veliki ✓
+  1200: {
+    slidesPerView: 1.6,
+    spaceBetween: 100,
+    centeredSlides: true,
+  },
+  
+  // xxl (1400px+) - desktop extra ✓  
+  1400: {
+    slidesPerView: 1.7,
+    spaceBetween: 200,
+    centeredSlides: true,
+  },
+},
     
-    // Custom efekti za center slide
-    on: {
-      slideChange: function() {
-        document.querySelectorAll('.card-item').forEach((card) => {
-          card.style.transform = '';
-          card.style.zIndex = '';
-          card.style.filter = '';
-        });
-      },
-    }
+
   });
   
   // Custom center focus efekat
@@ -105,7 +114,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  swiper.on('slideChangeTransitionStart', updateCenterFocus);
-  swiper.on('transitionStart', updateCenterFocus);
   updateCenterFocus();
 });

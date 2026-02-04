@@ -610,3 +610,34 @@ div[id],
 article[id] {
   scroll-margin-top: 150px;
 }
+
+.icons-30 svg{
+  margin-bottom: 30px;
+}
+
+.icons-24{
+
+  .col-md-11{
+    & > div{
+      max-width: 350px;
+    }
+  }
+
+  svg{
+    margin-bottom: 24px;
+    & + p{
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+  }
+}
+
+.how-it-works-extended{
+  .col{
+    max-width: 250px;
+  }
+}
+
+.btn{
+  cursor: pointer;
+}

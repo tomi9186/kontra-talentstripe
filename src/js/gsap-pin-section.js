@@ -4,19 +4,25 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-export function initGsapPinSection(container = document) {
-  // ✅ RESPONSIVE DETEKCIJA (Bootstrap md+ = 768px+)
-  const isDesktop = window.innerWidth >= 768;
-  if (!isDesktop) return;
+// ✅ GLOBALNA VARIJABLA za praćenje aktivnih ScrollTrigger-a
+let activeScrollTriggers = [];
 
-  // ✅ NAĐI SVE BLOKOVE (podržava više blokova)
+export function initGsapPinSection(container = document) {
+  // 🎯 INICIJALIZACIJA SAMO NA DESKTOPU (768px+)
+  const isDesktop = window.innerWidth >= 768;
+  if (!isDesktop) {
+    // Ukloni sve aktivne triggere ako se prebaci na mobile
+    killAllScrollTriggers();
+    return;
+  }
+
+  // ✅ NAĐI SVE BLOKOVE
   const wrappers = container.querySelectorAll('.custom-scroll-pin-wrapper');
   
   wrappers.forEach((customScrollPinWrapper, wrapperIndex) => {
     const customScrollPinElement = customScrollPinWrapper.querySelector('.custom-scroll-pin-element');
     if (!customScrollPinElement) return;
 
-    // ✅ UNIČNI ID za svaki blok
     const uniqueId = `pin-section-${wrapperIndex}`;
 
     // FIKSNA 600px VISINA
@@ -43,8 +49,15 @@ export function initGsapPinSection(container = document) {
     // Ukloni active klase
     listItems.forEach(li => li.classList.remove('active'));
 
-    // Pin glavni element (UNIČNI ID)
-    ScrollTrigger.create({
+    // 🗑️ Ukloni stare triggere za ovaj wrapper
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.id && trigger.vars.id.includes(uniqueId)) {
+        trigger.kill();
+      }
+    });
+
+    // Pin glavni element
+    const pinTrigger = ScrollTrigger.create({
       id: `${uniqueId}-main`,
       trigger: customScrollPinWrapper,
       start: 'top top',
@@ -54,8 +67,8 @@ export function initGsapPinSection(container = document) {
       invalidateOnRefresh: true
     });
 
-    // Master controller (UNIČNI ID)
-    ScrollTrigger.create({
+    // Master controller
+    const controllerTrigger = ScrollTrigger.create({
       id: `${uniqueId}-controller`,
       trigger: customScrollPinWrapper,
       start: 'top top',
@@ -74,12 +87,15 @@ export function initGsapPinSection(container = document) {
       }
     });
 
+    // Spremi reference
+    activeScrollTriggers.push(pinTrigger, controllerTrigger);
+
     // Progress bar animacije
     [0, 1, 2].forEach(index => {
       if (!listItems[index]) return;
       const listItem = listItems[index];
 
-      gsap.to(listItem, {
+      const progressTrigger = gsap.to(listItem, {
         '--custom-pin-progression': 1,
         scrollTrigger: {
           id: `${uniqueId}-listitem-${index}`,
@@ -90,6 +106,7 @@ export function initGsapPinSection(container = document) {
           invalidateOnRefresh: true
         }
       });
+      activeScrollTriggers.push(progressTrigger.scrollTrigger);
     });
 
     // Clip-path SAMO za prve 2
@@ -97,7 +114,7 @@ export function initGsapPinSection(container = document) {
       if (!images[index]) return;
       const image = images[index];
 
-      gsap.to(image, {
+      const clipTrigger = gsap.to(image, {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
         scrollTrigger: {
           id: `${uniqueId}-image-${index}`,
@@ -108,6 +125,7 @@ export function initGsapPinSection(container = document) {
           invalidateOnRefresh: true
         }
       });
+      activeScrollTriggers.push(clipTrigger.scrollTrigger);
     });
 
     // Treća slika uvijek vidljiva
@@ -118,3 +136,33 @@ export function initGsapPinSection(container = document) {
     }
   });
 }
+
+// 🗑️ POMOĆNA FUNKCIJA - Uklanja sve ScrollTrigger-e
+function killAllScrollTriggers() {
+  activeScrollTriggers.forEach(trigger => {
+    if (trigger && trigger.kill) {
+      trigger.kill();
+    }
+  });
+  activeScrollTriggers = [];
+}
+
+// 🔄 RESIZE HANDLER - Ponovna inicijalizacija na resize
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    ScrollTrigger.refresh();
+    // Ponovno inicijaliziraj samo ako je desktop
+    if (window.innerWidth >= 768) {
+      initGsapPinSection();
+    } else {
+      killAllScrollTriggers();
+    }
+  }, 250);
+});
+
+// ➕ Pozovi funkciju na load
+document.addEventListener('DOMContentLoaded', () => {
+  initGsapPinSection();
+});

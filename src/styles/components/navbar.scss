@@ -1,7 +1,15 @@
 @import "../base/variables";
 
+.navbar-open .site-header{
+    background: #ffffff;
+
+    @media (min-width: $breakpoint-md) {
+        background: none;
+    }
+}
+
 .site-header {
-    top: 1.5rem;
+    top: 0;
     border-radius: $border-radius-md;
     z-index: 1050; // Visok z-index da bude iznad svega
     position: sticky !important;
@@ -78,25 +86,26 @@
         }
     }
 }
-
+.navbar{
 // Hamburger menu stil
 .navbar-toggler {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    background-color: transparent;
-    border-radius: 0.25rem;
     transition: all 0.3s ease;
     margin-left: auto;
+    outline: none;
+    border: none;
+    box-shadow: none;
 
     &:not(.collapsed) {
         background-color: $melrose;
-        color: #fff;
-        border-color: $melrose;
 
         .navbar-toggle-text {
             content: "Close";
         }
+    }
+
+    &:hover, &:focus, &:active, &:visited {
+        background-color: #D1C4FF;
+        color: $tolopea;
     }
 
     .navbar-toggler-icon {
@@ -107,7 +116,7 @@
         display: inline-block;
     }
 }
-
+}
 // Mobilna navigacija - fullscreen ISPOD headera
 @media (max-width: 1199.98px) {
     .navbar-collapse {
