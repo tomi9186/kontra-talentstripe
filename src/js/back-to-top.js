@@ -1,7 +1,12 @@
-// Back to Top - MATEMATIČKI SAVRŠEN progress circle
+// Back to Top - MATEMATIČKI SAVRŠEN progress circle (SAFE)
 document.addEventListener('DOMContentLoaded', function() {
+  // 🎯 PROVJERA POSTOJI LI BACK BUTTON NA OVOJ STRANICI
   const backToTopBtn = document.querySelector('.back-to-top');
+  if (!backToTopBtn) return; // 🚫 Ako nema buttona, izađi
+  
   const svg = backToTopBtn.querySelector('svg');
+  if (!svg) return; // 🚫 Ako nema SVG-a, izađi
+  
   const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
   
   circle.setAttribute('class', 'progress-ring');
@@ -20,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   svg.appendChild(circle);
   
+  // Click handler
   backToTopBtn.addEventListener('click', function(e) {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
