@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Talentstripe</title>
 </head>
-<body>
+<body class="home">
 
   <header class="site-header sticky-top pt-4">
     <nav class="container">
-        <div class="navbar navbar-expand-md sticky-top p-4">
+        <div class="navbar navbar-expand-xl sticky-top p-4">
             <!-- Logo -->
             <a class="navbar-brand fw-bold fs-5" href="#">
                 <img src="./img/logo.svg" alt="Logo">
             </a>
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="d-none d-md-block" width="1" height="55" viewBox="0 0 1 55" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="d-none d-xl-block" width="1" height="55" viewBox="0 0 1 55" fill="none">
                 <path d="M0.5 0V55" stroke="#D1C4FF"/>
             </svg>
 
             <!-- Navigacija (vidljiva na xl breakpoint i više) -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto ms-5 gap-1 gap-lg-3 mt-3 mt-xl-0">
+                <ul class="navbar-nav me-auto ms-3 ms-xxl-5 gap-1 gap-lg-3 mt-3 mt-xl-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="#for-candidates">For Candidates</a>
                     </li>
@@ -39,14 +39,19 @@
                     </li>
                 </ul>
 
-                <div class="d-block d-md-none">
-                  <hr />
-
+                <div class="d-block d-md-none navbar-nav me-auto ps-3 ps-xxl-5 gap-1 gap-lg-3 mt-3 mt-xl-0 w-100 fs-18">
+                   <hr class="w-100" />
+                   <li class="nav-item">
+                        <a class="nav-link" href="/pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
                 </div>
                 
                 <!-- CTA Gumbi za desktop -->
-                <div class="navbar-cta d-none d-md-flex gap-2">
-                    <a href="contact.html" class="btn btn-empty btn-sm">Contact</a>
+                <div class="navbar-cta gap-2">
+                    <a href="contact.html" class="btn btn-empty btn-sm d-none d-xxl-inline-block">Contact</a>
                     <a href="javascript:" class="btn btn-secondary btn-sm">Login / Sign up</a>
                 </div>
             </div>
@@ -64,10 +69,11 @@
     <div class="container">
       <div class="row">
         <!-- Lijeva strana - sadržaj -->
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 order-md-2 order-md-1">
           <h1>Find the Right Talent. <br />Or the Right Job.</h1>
           <p>Talentstripe connects employers and job seekers through a scientifically validated competency model and an AI algorithm that finds the best people for the job quickly, accurately, and easily. </p>
           <div class="d-block d-sm-flex gap-2">
+            <p class="btn"></p>
             <a href="#" class="btn btn-primary-purple mb-3 mb-sm-0">I’m Looking for a Job </a>
             <a href="#" class="btn btn-primary-bermuda">I Need Employees</a>
           </div>
@@ -588,10 +594,10 @@
   <section id="blog" class="blog py-5">
     <div class="container">
       <!-- Header -->
-      <div class="blog-header d-flex justify-content-between align-items-center mb-4 mb-lg-5 px-lg-0">
+      <div class="blog-header d-flex justify-content-around justify-content-md-between align-items-center mb-4 mb-lg-5 px-lg-0">
         <h2 class="title mb-0">Blog</h2>
         <a href="blog.html">
-          <span class="view-more">Vidi više</span>
+          <span class="view-more d-none d-md-block">Vidi više</span>
         </a>
       </div>
       
@@ -718,6 +724,12 @@
       </div>
     </div>
   </footer>
+
+  <div class="max-600"></div>
+  <div class="site-main">
+    <h1></h1>
+    <h3></h3>
+  </div>
 
 </body>
 </html>

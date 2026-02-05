@@ -87,6 +87,13 @@ module.exports = {
         test: /\.html$/i,
         loader: 'html-loader',
       },
+      {
+        test: require.resolve('swiper'),
+        use: [{
+          loader: 'expose-loader',
+          options: { exposes: ['Swiper', 'swiper'] }
+        }]
+      },
     ],
   },
   optimization: {

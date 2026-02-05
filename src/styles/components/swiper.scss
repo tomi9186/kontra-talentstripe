@@ -1,9 +1,18 @@
 .swiper {
   .swiper-container {
-    padding: 44px 0 20px;
-    background-image: url('../img/map.svg');
+    padding: 44px 16px 20px;
     background-repeat: no-repeat;
     background-position: bottom;
+    background-color: $titan-white;
+    border-radius: 16px;
+
+    @media (min-width: $breakpoint-md) {
+       background-image: url('../img/map.svg');
+    }
+
+     @media (max-width: $breakpoint-md) {
+       padding-bottom: 88px;
+    }
 
     .swiper-pagination {
       bottom: 144px;
@@ -19,13 +28,20 @@
           opacity: 1;
         }
       }
+
+      @media (max-width: $breakpoint-md){
+        bottom: 270px;
+      }
     }
   }
 
   &.titan-white{
     .swiper-container{
       background-color: $titan-white-2;
-      background-image: url('../img/map-2.svg');
+      
+      @media (min-width: $breakpoint-md) {
+       background-image: url('../img/map-2.svg');
+    }
 
       .card-item{
         background-color: $blue-chalk;
@@ -40,7 +56,10 @@
   &.bermuda{
     .swiper-container{
       background-color: $bermuda;
-      background-image: url('../img/map-3.svg');
+      @media (min-width: $breakpoint-md) {
+       background-image: url('../img/map-3.svg');
+    }
+
 
       .card-item{
         background-color: $iceberg;
@@ -108,6 +127,15 @@
     height: 70px;
     right: 258px;
 
+    @media (max-width: $breakpoint-md){
+      position: relative;
+        bottom: 74px;
+        display: inline-block;
+        left: 50% !important;
+        right: 50% !important;
+        margin-right: -32px;
+    }
+
     &.swiper-button-disabled {
       background-color: transparent;
       border: 1px solid rgba(24, 3, 79, 0.25);
@@ -122,6 +150,12 @@
     transform: rotate(-180deg);
     right: auto;
     left: 258px;
+
+    @media (max-width: $breakpoint-md){
+      float: left;
+      margin-right: 32px;
+      margin-left: -86px;
+    }
   }
 
   .swiper-slide-prev,

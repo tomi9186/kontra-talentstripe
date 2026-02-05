@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blog</title>
-<body>
+<body class="container">
 
   <header class="site-header sticky-top mt-4">
     <nav class="container">
@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto ms-5 gap-1 gap-lg-3 mt-3 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">For Candidates</a>
+              <a class="nav-link order-md" href="#">For Candidates</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Know Your Strengths</a>
@@ -59,10 +59,59 @@
   </header>
 
 
-  <section class="contact">
-     
-  </section>
+ <section class="contact">
+    <div class="container">
+       <div class="row">
+        <div class="col-sm-6 col-md-6 col-12">
+          <h1>Get in Touch</h1>
+          <p>Fill out the form below and we’ll get back to you as soon as possible.</p>
+          <h2>General Contact</h2>
+          <p class="highlighted-text">Email:</p>
+          <p>your@mail.com</p>
+          <p class="highlighted-text">Location:</p>
+          <p>Your address 10000</p>
+          <p class="highlighted-text">Phone number:</p>
+          <p>+123-456-789</p>
+        </div>
+        <div class="col-sm-6 col-md-6 col-12">
+          <form>
+            <div class="form-group">
+              <label for="first-last-name">First and last name <sup>*</sup></label>
+              <input type="text" name="first-last-name" id="first-last-name" placeholder="Enter your first and last name" required>
+            </div>
+            <div class="form-group">
+              <label for="email-address">Email <sup>*</sup></label>
+              <input type="email" name="email-address" id="email-address" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone <sup>*</sup></label>
+              <input type="tel" name="phone" id="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+              <label for="company">Company <sup>*</sup></label>
+              <input type="text" name="company" id="company" placeholder="Enter your company name" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message <sup>*</sup></label>
+              <textarea type="text" name="message" id="message" placeholder="Enter your message"></textarea>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="agree-on-privacy-policy">
+                <label class="form-check-label align-middle" for="agree-on-privacy-policy">
+                  I accept the Talentstripe <a href="#" target="_blank" class="privacy">privacy policy</a>.
+                </label>
+              </div>
+            </div>
+            
+            <a href="#" class="btn btn-secondary btn-sm send-message">Send message</a>
+          </form>
+        </div>
+       </div>
 
+
+    </div>
+  </section>
 
  
 

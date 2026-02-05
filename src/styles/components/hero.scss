@@ -4,8 +4,26 @@
   position: relative;
   margin-top: $spacing-lg;
 
+  a, a:hover, a:active, a:visited, a:focus{
+      color: $tolopea;
+      cursor: pointer;
+  }
+
+  .btn-primary-purple{
+    a, a:hover, a:active, a:visited, a:focus{
+      color: #FFFFFF;
+    }
+  }
+
+  a.btn{
+    line-height: 55px;
+    height: 55px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   @include media-breakpoint-up(md) {
-    padding: 180px 0;
+    padding: 134px 0 180px;
     margin-top: 0;
   }
 
@@ -15,6 +33,12 @@
 
   p{
     margin-bottom: 48px;
+
+    &.btn{
+      line-height: 55px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 
   .container{

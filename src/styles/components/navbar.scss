@@ -49,21 +49,34 @@
                 &.active .nav-link {
                     color: $tolopea;
                 }
+                @media (max-width: $breakpoint-md) {
+                    background: none !important;
+                }
             }
 
             .nav-link {
                 font-weight: 500;
                 color: $tolopea;
-                padding: 12px 24px;
+                padding: 18.5px 12px;
                 font-size: 25px;
                 transition: color 0.3s ease;
+                line-height: 1;
 
                 @media (min-width: $breakpoint-md) {
                     font-size: 18px;
                 }
 
+                @media (min-width: $breakpoint-xxl) {
+                    padding: 18.5px 24px;
+                }
+
                 &:hover {
                     color: $melrose;
+                }
+
+                @media (max-width: $breakpoint-xl) {
+                    padding: 16px 24px;
+                    border: none;
                 }
             }
         }
@@ -77,6 +90,9 @@
                 font-weight: 500;
                 border-radius: 8px;
                 border: none;
+                line-height: 55px;
+                padding-top: 0;
+                padding-bottom: 0;
 
                 &.btn-secondary {
                     background-color: $melrose;
@@ -119,6 +135,11 @@
 }
 // Mobilna navigacija - fullscreen ISPOD headera
 @media (max-width: 1199.98px) {
+    .fs-18{
+        li a{
+            font-size: 18px !important;
+        }
+    }
     .navbar-collapse {
         position: fixed;
         top: 120px; // Visina headera + margin (približno)
@@ -161,8 +182,10 @@
         .navbar-cta {
             margin-top: auto;
             padding-top: 2rem;
-            border-top: 1px solid #e9ecef;
             gap: 1rem;
+            width: 100%;
+            max-width: 440px;
+            padding: 0 20px;
 
             .btn {
                 width: 100%;
