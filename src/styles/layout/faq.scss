@@ -1,0 +1,119 @@
+/* WP GROUP BACKGROUND COLORS (already applied in HTML) */
+.wp-block-group.blue-chalk .accordion-item .accordion-header {
+  background: var(--blue_chalk, #F8D2FF);
+}
+
+.wp-block-group.bermuda .accordion-item .accordion-header{
+  background: var(--bermuda, #87D7D3);
+}
+
+.wp-block-group.titan-white .accordion-item .accordion-header {
+  background: var(--titan_white, #F3F0FF);
+}
+
+.wp-block-group.blue-chalk, .wp-block-group.bermuda, .wp-block-group.titan-white{
+
+
+    h3:not(.accordion-header){
+        font-size: 39px;
+        margin-bottom: -4px;
+    }
+
+    .faq-block{
+
+        h3{
+            border-radius: 8px;
+
+            button{
+                border-radius: 8px !important;
+                transition: all 300ms linear;
+
+                &[aria-expanded="true"]{
+                    box-shadow: 0 4px 30px 0 rgba(248, 210, 255, 0.50) !important;
+                }
+            }
+        }
+
+    }
+}
+
+/* FAQ BLOCK */
+.faq-block {
+  margin-top: 32px;
+  margin-bottom: 48px;
+
+  .accordion-item {
+    border: none;
+    background: transparent;
+    margin-bottom: 28px;
+  }
+
+  .accordion-header {
+    margin: 0;
+    box-shadow: 8px;
+  }
+
+  .accordion-button {
+    font-size: 20px;
+    font-weight: 600;
+    color: #18034F;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 20px 24px;
+    background: transparent;
+
+    &:not(.collapsed) {
+      color: #18034F;
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+
+  .accordion-body {
+    padding: 24px;
+    font-size: 16px;
+    color: #18034F;
+    background: transparent;
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    ol {
+      padding-left: 20px;
+
+      li {
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* BUTTON COLOR FOLLOWS PARENT GROUP COLOR */
+.wp-block-group.blue-chalk .faq-block .accordion-button {
+  background: var(--blue_chalk, #F8D2FF);
+}
+
+.wp-block-group.bermuda .faq-block .accordion-button {
+  background: var(--bermuda, #87D7D3);
+}
+
+.wp-block-group.titan-white .faq-block .accordion-button {
+  background: var(--titan_white, #F3F0FF);
+}
+
+/* EDITOR TEXTAREA */
+.faq-editor .faq-item-editor textarea {
+  width: 100%;
+  min-height: 120px;
+  font-size: 14px;
+}
+
+.accordion-navigation{
+
+    @media (max-width: 462px){
+        flex-direction: column;
+        gap: 10px !important;
+    }
+}

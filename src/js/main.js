@@ -8,6 +8,7 @@ import './back-to-top';
 import './swiper';
 import './nav-active';
 import { initGsapPinSection } from './gsap-pin-section';
+import './additional';
 
 // Custom JS
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,3 +59,4 @@ document.addEventListener('DOMContentLoaded', () => {
         initGsapPinSection(document);
     }
 });
+

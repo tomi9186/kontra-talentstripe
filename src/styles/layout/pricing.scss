@@ -1,0 +1,151 @@
+// Pricing cards SCSS (per-card variants, no gradients)
+
+$gap: 36px;
+$min-col-width: 200px;
+$color-180: #18034F;
+$border-rgba: rgba(24, 3, 79, 0.25);
+
+// Variant colors: first = card background, second = price background
+$variants: (
+  'blue-chalk': (card: #F8D2FF, price: #A848CC),
+  'titan-white': (card: #F3F0FF, price: #D1C4FF),
+  'iceberg': (card: #E1F5F4, price: #87D7D3)
+);
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-col-width, 260px));
+  gap: $gap;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+
+  @media (max-width: 576px){
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* Card shell */
+.pricing-card {
+  min-width: $min-col-width;
+  display: flex;
+  align-items: stretch;
+
+  .pricing-card-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  /* Header */
+  .pricing-header {
+    padding: 24px 16px;
+    text-align: center;
+    color: $color-180;
+
+    .pricing-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 46px 0;
+      color: $color-180;
+      text-align: left;
+    }
+
+    .pricing-icon {
+      display: flex;
+      justify-content: center;
+
+      svg { display: block; max-width: 100%; height: auto; }
+    }
+
+    .pricing-credits {
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 38px;
+
+      .credits-number { font-weight: 600; }
+      .credits-unit { font-weight: 300; }
+
+      @media (max-width: $breakpoint-md){
+        display: block;
+      }
+    }
+  }
+
+  /* Middle optional block (keeps equal heights when empty) */
+  .pricing-middle {
+    padding: 24px 16px;
+    border-top: 1px solid $border-rgba;
+    border-bottom: 1px solid $border-rgba;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+
+    .pricing-extra {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .extra-icon { display: inline-flex; width: 13px; height: 21px; }
+      .extra-text { color: $color-180; font-size: 14px; }
+    }
+
+    &.empty {
+      padding: 0;
+      border: none;
+      flex: 1 0 auto;
+    }
+  }
+
+  /* Price block */
+  .pricing-price {
+    padding: 24px 16px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    color: $color-180;
+
+    &.empty {
+      visibility: hidden;
+      display: none;
+    }
+  }
+}
+
+/* Per-card variant application
+   The variant class is expected on the card element (e.g., .pricing-card.blue-chalk)
+   or on a wrapper ancestor (e.g., .blue-chalk .pricing-card-inner). We target both.
+*/
+@each $name, $map in $variants {
+  $card-color: map-get($map, card);
+  $price-color: map-get($map, price);
+
+  /* variant class on the card */
+  .pricing-card.#{$name} .pricing-card-inner {
+    background: $card-color;
+  }
+  .pricing-card.#{$name} .pricing-price {
+    background: $price-color;
+  }
+
+  /* variant class on an ancestor */
+  .#{$name} .pricing-card-inner {
+    background: $card-color;
+  }
+  .#{$name} .pricing-price {
+    background: $price-color;
+  }
+}
+
+.pricing-card.blue-chalk .pricing-price{
+    color: #ffffff;
+}

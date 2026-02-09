@@ -695,6 +695,18 @@ a:hover{
   max-width: 600px;
 }
 
+.max-747{
+  max-width: 747px;
+}
+
+.fw-500{
+  font-weight: 500;
+}
+
+.fw-600{
+  font-weight: 600;
+}
+
 .site-main{
   h1{
     font-size: 39px;
@@ -706,6 +718,14 @@ a:hover{
   }
   h1, h2, h3{
     margin-top: 2rem;
+  }
+
+  h1.fs-76{
+    font-size: 76px;
+
+    @media (max-width: $breakpoint-md){
+      font-size: 46px;
+    }
   }
 }
 
@@ -789,6 +809,39 @@ section{
 
 }
 
+.post-thumbnail, .post-content{
+
+  h3{
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  img{
+    border-radius: 16px;
+  }
+}
+
+.post-thumbnail{
+  margin-bottom: 32px;
+
+  img{
+    margin: 0;
+  }
+}
+
+.post-content{
+
+  img{
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  img, iframe{
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .container{
   .container{
     padding-left: 0;
@@ -804,5 +857,86 @@ body.blog h1{
     font-size: 49px;
     margin-top: 0;
     margin-bottom: 73px;
+  }
+}
+
+.post-share button, .post-share a {
+    border: none;
+    line-height: 48px;
+    width: 48px;
+    text-align: center;
+    background: #F3F0FF;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 0;
+    margin: 8px;
+}
+
+.post-share button svg, .post-share a svg {
+    margin-top: -4px;
+}
+
+.post-share{
+
+  @media(min-width: $breakpoint-lg){
+    position: absolute !important;
+    width: 70px;
+    display: block !important;
+    left: -200px;
+    top: 0;
+    height: 100%;
+  }
+
+  & > div{
+
+    @media(min-width: $breakpoint-lg){
+      position: sticky;
+      top: 160px;
+    }
+
+    button:first-child{
+
+      @media(min-width: $breakpoint-lg){
+        margin-bottom: 130px;
+
+        &::after {
+            content: "Back";
+            position: absolute;
+            right: -37px;
+            color: #18034F;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        & + a{
+          position: relative;
+        }
+
+        & + a::after{
+            content: "Share";
+            font-size: 13px;
+            font-weight: 600;
+            position: absolute;
+            left: 8px;
+            top: -46px;
+            color: #18034F;
+        }
+      }
+    }
+
+    a:first-child{
+
+      @media(min-width: $breakpoint-lg){
+
+        &::after{
+          content: "Share";
+          position: absolute;
+          right: -37px;
+          color: #18034F;
+          font-size: 13px;
+          font-weight: 600;
+        }
+      }
+    }
   }
 }

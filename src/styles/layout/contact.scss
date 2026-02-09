@@ -1,0 +1,345 @@
+// CONTACT PAGE - WordPress Gutenberg + Forminator
+// Targetira .wp-block-columns s klasom "contact"
+.site-main.container {
+  // Glavni container
+  margin-top: $spacing-section;
+  padding: 0 $spacing-md;
+
+  @media (max-width: $breakpoint-md) {
+    margin-top: $spacing-3xl;
+  }
+
+  // Kontakt sekcija - koristi postojeću .contact klasu na wp-block-columns
+  .contact.wp-block-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0 -16px;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      margin: 0;
+    }
+
+    // Lijeva kolona - Kontakt info
+    .wp-block-column:first-child {
+      flex: 0 0 calc(50% - #{$spacing-lg});
+      max-width: calc(50% - #{$spacing-lg});
+      padding: 0 $spacing-lg 0 $spacing-md;
+
+      @media (max-width: $breakpoint-md) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+        margin-bottom: $spacing-2xl;
+      }
+
+      // H1 - Hero heading
+      h1.wp-block-heading {
+        font-family: $font-family;
+        color: $tolopea;
+        font-weight: $h1-weight;
+        font-size: $font-size-4xl;
+        line-height: $h1-line-height;
+        margin-bottom: $spacing-xl;
+        margin-top: 46px;
+
+        @media (max-width: $breakpoint-mobile) {
+          font-size: $font-size-h1-mobile !important;
+        }
+
+        @media (max-width: $breakpoint-md) {
+            font-size: 46px;
+            margin-top: 26px;
+        }
+      }
+
+      // Intro paragraph
+      p {
+        font-family: $font-family;
+        color: $tolopea;
+        font-weight: $body-1-weight;
+        font-size: $font-size-xl;
+        line-height: $body-1-line-height;
+        margin-top: 8px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        // Highlighted labels (Email:, Location:, Phone:)
+        &:nth-of-type(2),
+        &:nth-of-type(4),
+        &:nth-of-type(6) {
+          @extend .highlighted-text;
+          margin-top: 8px;
+        }
+      }
+
+      // H2 - Section heading
+      h2.wp-block-heading {
+        font-family: $font-family;
+        color: $tolopea;
+        font-weight: $h2-weight;
+        font-size: $font-size-xl;
+        line-height: $lh-tight;
+        margin-top: $spacing-2xl;
+        margin-bottom: $spacing-lg;
+      }
+    }
+
+    // Desna kolona - Form
+    .wp-block-column:last-child {
+      flex: 0 0 calc(50% - #{$spacing-lg});
+      max-width: calc(50% - #{$spacing-lg});
+      padding: 0 $spacing-lg $spacing-lg 0;
+
+      @media (max-width: $breakpoint-md) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      form {
+        margin-top: $spacing-2xl;
+
+        @media (max-width: $breakpoint-mobile) {
+          margin-top: $spacing-2xl;
+        }
+      }
+    }
+  }
+}
+
+// Highlighted text (Email:, Location:, Phone number:)
+.highlighted-text {
+  font-family: $font-family;
+  color: $amethyst;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  line-height: $lh-tight;
+  margin-top: $spacing-sm !important;
+  margin-bottom: 0 !important;
+  text-transform: uppercase;
+}
+
+// Forminator Form Styling
+.forminator-ui {
+  // Input & Textarea Fields
+  input,
+  textarea,
+  .forminator-input,
+  .forminator-textarea,
+  .forminator-name--field,
+  .forminator-email--field,
+  .forminator-field--phone {
+    background-color: $melrose-rgb-25;
+    padding: 23px 24px;
+    border: 0;
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 0;
+    font-family: $font-family;
+    color: $tolopea;
+    font-weight: $body-4-weight;
+    font-size: $font-size-md;
+
+    &::placeholder {
+      font-family: $font-family;
+      color: $tolopea;
+      font-weight: $body-4-weight;
+      font-size: $font-size-md;
+      line-height: $lh-tight;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $amethyst-rgb-25;
+    }
+
+    // Error state
+    &[aria-invalid="true"] {
+      background-color: rgba(237, 30, 30, 0.1);
+      border: 1px solid rgba(237, 30, 30, 0.3);
+    }
+  }
+
+  textarea {
+    height: 150px;
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  // Form rows spacing
+  .forminator-row:not(:first-child) {
+    margin-top: $spacing-xl;
+
+    @media (max-width: $breakpoint-md) {
+        margin-top: 0;
+    }
+  }
+
+  // Field wrappers
+  .forminator-field {
+    &.forminator-has_error {
+      .forminator-error-message {
+        display: block !important;
+        color: #ED1E1E;
+        font-size: $font-size-sm;
+        margin-top: $spacing-xs;
+        font-family: "Archivo", sans-serif;
+      }
+    }
+  }
+
+  .forminator-field-consent{
+    .forminator-label, .forminator-checkbox-box{
+        display: none;
+    }
+
+    .forminator-checkbox__wrapper{
+        display: flex;
+    }
+  }
+
+  // Labels
+  .forminator-label {
+    font-family: $font-family;
+    color: $tolopea;
+    font-weight: $h2-weight;
+    font-size: $font-size-xl;
+    line-height: $lh-tight;
+    margin-bottom: $spacing-xs;
+
+    .forminator-required {
+      color: #ED1E1E;
+      font-size: $font-size-xl;
+      line-height: 1.1;
+      font-weight: $body-2-weight;
+      font-family: "Archivo", sans-serif;
+    }
+  }
+
+  // Character counter
+  .forminator-description {
+    font-size: $font-size-sm;
+    color: $tolopea-rgb-25;
+    margin-bottom: $spacing-xs;
+    float: right;
+  }
+
+  // Checkbox
+  .forminator-checkbox__wrapper {
+    margin-top: $spacing-xl;
+
+    .forminator-checkbox {
+      input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        border: 1px solid $tolopea;
+        margin-top: 0;
+        margin-right: $spacing-sm;
+        accent-color: $amethyst;
+      }
+
+      .forminator-checkbox-box {
+        width: 22px;
+        height: 22px;
+        border: 1px solid $tolopea;
+        margin-right: $spacing-sm;
+      }
+    }
+
+    .forminator-consent__label {
+      font-family: $font-family;
+      color: $tolopea;
+      font-weight: $body-4-weight;
+      font-size: $font-size-md;
+      line-height: $lh-body;
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: $amethyst;
+        text-decoration: underline;
+
+        &:hover {
+          color: darken($amethyst, 10%);
+        }
+      }
+    }
+  }
+
+  // Submit Button
+  .forminator-button-submit {
+    font-family: $font-family;
+    color: $tolopea;
+    background-color: $melrose;
+    font-weight: $body-3-weight;
+    font-size: $font-size-lg;
+    line-height: $lh-tight;
+    text-decoration: none;
+    border-radius: $radius-sm;
+    border: 0;
+    padding: $spacing-md $spacing-lg;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: darken($melrose, 5%);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 60%;
+    }
+  }
+
+  // Error messages
+  .forminator-error-message,
+  .forminator-response-message.forminator-error {
+    color: #ED1E1E !important;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+    font-family: "Archivo", sans-serif;
+  }
+
+  // Hide edit link
+  .forminator-edit-module {
+    display: none;
+  }
+}
+
+// Mobile optimizations
+@media (max-width: $breakpoint-md) {
+  .site-main.container .contact.wp-block-columns {
+    flex-direction: column;
+  }
+
+  .site-main.container .contact.wp-block-columns .wp-block-column:first-child {
+    order: 1;
+  }
+
+  .site-main.container .contact.wp-block-columns .wp-block-column:last-child {
+    order: 2;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .site-main.container {
+    padding: 0 $spacing-sm;
+  }
+
+  .site-main.container .contact.wp-block-columns .wp-block-column:first-child {
+    h1.wp-block-heading {
+      text-align: left;
+    }
+
+    p {
+      margin-top: $spacing-2xl;
+    }
+  }
+}

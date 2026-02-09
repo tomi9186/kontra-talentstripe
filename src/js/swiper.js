@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     spaceBetween: 300, // Povećan razmak
     
     // Speed i efekti
-    speed: 600,
+    speed: 800,
     grabCursor: true,
     
     // Touch efekti
