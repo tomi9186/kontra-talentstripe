@@ -108,6 +108,14 @@ ul.custom-scroll-pin-list {
   }
 }
 
+.melrose ul.custom-scroll-pin-list:before, .melrose ul.custom-scroll-pin-list>li:before{
+  background-color: $melrose;
+}
+
+.bermuda ul.custom-scroll-pin-list:before, .bermuda ul.custom-scroll-pin-list>li:before{
+  background-color: $bermuda;
+}
+
 // ✅ SAMO DODAJ ovo uz postojeći SCSS
 .custom-scroll-pin-wrapper {
   .custom-scroll-pin-element {

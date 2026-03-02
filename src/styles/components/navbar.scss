@@ -25,6 +25,10 @@
 
             img {
                 height: 54px;
+
+                @media (max-width: 376px) {
+                    height: 40px;;
+                }
             }
 
             &:hover {
@@ -33,34 +37,56 @@
         }
 
         .navbar-nav {
-            .nav-item {
+            .menu-item {
                 border-radius: 8px;
 
-                &.active {
+                a{
+                    color: $tolopea !important;
+                    display: block;
+                }
+
+                &.active a {
                     background: $amethyst-2;
                 }
-                &.active:nth-child(2) {
+                &.active:nth-child(2) a {
                     background: $melrose;
                 }
-                &.active:nth-child(3) {
+                &.active:nth-child(3) a {
                     background: $bermuda;
                 }
 
-                &.active .nav-link {
+                a:hover{
+                    background: $melrose;
+                }
+
+                &:nth-child(1) a:hover{
+                    background: $amethyst-2;
+                }
+
+                &:nth-child(3) a:hover{
+                    background: $bermuda;
+                }
+
+                &.active a {
                     color: $tolopea;
+
+                    @media (max-width: $breakpoint-md) {
+                        background: none !important;
+                    }
                 }
                 @media (max-width: $breakpoint-md) {
-                    background: none !important;
+                    padding-left: 0 !important;
                 }
             }
 
-            .nav-link {
+            .menu-item a {
                 font-weight: 500;
                 color: $tolopea;
                 padding: 18.5px 12px;
                 font-size: 25px;
                 transition: color 0.3s ease;
                 line-height: 1;
+                border-radius: 8px;
 
                 @media (min-width: $breakpoint-md) {
                     font-size: 18px;
@@ -77,6 +103,10 @@
                 @media (max-width: $breakpoint-xl) {
                     padding: 16px 24px;
                     border: none;
+                }
+
+                @media (max-width: 476px) {
+                    padding-left: 0;
                 }
             }
         }
@@ -97,6 +127,14 @@
                 &.btn-secondary {
                     background-color: $melrose;
                     color: $tolopea;
+                }
+
+                &.btn-empty::after{
+                    display: none;
+                }
+
+                &.btn-empty:hover, &.btn-empty:focus, &.btn-empty:active{
+                    background: $melrose;
                 }
             }
         }
@@ -164,16 +202,16 @@
             flex-direction: column;
             gap: 0;
 
-            .nav-link {
+            .menu-item a {
                 padding: 1.25rem 0;
                 font-size: 1.25rem;
                 border-bottom: 1px solid #e9ecef;
-                color: $tolopea;
+                color: $tolopea !important;
 
                 &:hover,
                 &:active,
                 &:focus {
-                    color: $melrose !important;
+                    color: $tolopea !important;
                 }
             }
         }

@@ -110,6 +110,7 @@
     background-repeat: no-repeat;
     background-size: 78px auto;
     background-position: 75px 44px;
+    filter: none !important;
 
     @media (min-width: $breakpoint-md) {
       padding: 64px 100px 104px;

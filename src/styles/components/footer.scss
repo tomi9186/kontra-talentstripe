@@ -13,34 +13,50 @@
     }
   }
 
-  .social-links {
     .social-link {
-      display: inline-flex;
+      display: inline;
       width: 24px;
       height: 24px;
 
+      svg{
+        fill: #18034f;
+      }
+
       &:hover {
         background-color: transparent;
+
+        svg{
+          fill: #a848cc;
+        }
       }
 
       i {
         font-size: 1.125rem;
       }
-    }
   }
 
   .footer-nav {
-    .footer-link {
+    a {
       color: $tolopea;
       text-decoration: none;
       font-size: 0.95rem;
       transition: color 0.3s ease;
       font-size: $font-size-md;
+      font-weight: 600;
+
+      padding: 12px 24px;
+      border-radius: 8px;
+
 
       &:hover {
-        color: $amethyst;
+        background-color: $melrose;
       }
     }
+  }
+
+  .btn{
+    font-size: 18px;
+    font-weight: 500;
   }
 
   @media (max-width: 767.98px) {

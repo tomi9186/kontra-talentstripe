@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  const navItems = document.querySelectorAll('.nav-item');
+  const navItems = document.querySelectorAll('.menu-item');
   const sections = document.querySelectorAll('section[id]');
 
   function updateActiveNav() {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     navItems.forEach(item => {
-      const link = item.querySelector('.nav-link');
+      const link = item.querySelector('a');
       item.classList.remove('active');
 
       if (!link) return;
